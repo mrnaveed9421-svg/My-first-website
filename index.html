@@ -25,6 +25,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,440;9..144,560;9..144,650&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+<!-- Animation Library (CSS) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -39,19 +42,6 @@
   "openingHoursSpecification": [{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:30"}]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"How much does house painting cost in Kuala Lumpur?","acceptedAnswer":{"@type":"Answer","text":"Cost depends on property size, surface condition and paint brand. We give a free on-site inspection and a written quotation before any work begins."}},
-    {"@type":"Question","name":"Which areas do you cover?","acceptedAnswer":{"@type":"Answer","text":"Kuala Lumpur, Puchong, Shah Alam, Subang Jaya, Petaling Jaya, Klang and nearby areas."}},
-    {"@type":"Question","name":"Do you offer a warranty?","acceptedAnswer":{"@type":"Answer","text":"Yes, every project includes a workmanship warranty, with the exact length stated in your quotation."}},
-    {"@type":"Question","name":"How long does a typical job take?","acceptedAnswer":{"@type":"Answer","text":"A landed house interior usually takes 3 to 5 days; a full exterior repaint takes 5 to 10 days. Apartments and offices are often done in 2 to 4 days."}},
-    {"@type":"Question","name":"Do you handle condo and apartment building rules?","acceptedAnswer":{"@type":"Answer","text":"Yes, we work within JMB/MC guidelines, including lift booking and protection of common areas."}}
-  ]
-}
-</script>
 
 <style>
 :root{
@@ -62,187 +52,137 @@
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important;}}
 body{margin:0;font-family:'Inter',sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 h1,h2,h3,h4{font-family:'Fraunces',serif;letter-spacing:-0.01em;margin:0;}
 a{color:inherit;text-decoration:none;}
 button{font-family:inherit;border:none;background:none;cursor:pointer;}
 .wrap{max-width:1240px;margin:0 auto;padding:0 24px;}
 @media(min-width:768px){.wrap{padding:0 40px;}}
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
 
-/* Reusable gold gradients (no external assets) */
-.g-1{background:linear-gradient(135deg,#1B2436 0%,#0F172A 60%,#0A101E 100%);}
-.g-2{background:linear-gradient(135deg,#D4AF37 0%,#A9821F 100%);}
-.g-3{background:linear-gradient(135deg,#2A3654 0%,#141C2E 100%);}
-.g-4{background:linear-gradient(135deg,#3A2F17 0%,#0F172A 65%);}
-.g-5{background:linear-gradient(135deg,#0F172A 0%,#2E2410 100%);}
-.g-6{background:linear-gradient(135deg,#1E2A44 0%,#0A101E 100%);}
+/* ---------- Buttons & Hover Animations ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-weight:600;font-size:.95rem;padding:.95rem 1.9rem;border-radius:999px;transition:all .3s cubic-bezier(0.25, 0.8, 0.25, 1);white-space:nowrap;position:relative;overflow:hidden;z-index:1;}
+.btn::before {content: '';position: absolute;top: 0;left: 0;width: 0%;height: 100%;background: rgba(255,255,255,0.1);transition: all .3s ease;z-index: -1;}
+.btn:hover::before {width: 100%;}
+.btn:active{transform:scale(.96) translateY(1px);}
 
-/* ---------- Buttons ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-weight:600;font-size:.95rem;padding:.95rem 1.9rem;border-radius:999px;transition:transform .25s ease, box-shadow .25s ease;white-space:nowrap;}
-.btn:active{transform:scale(.97);}
-.btn-gold{background:linear-gradient(135deg,var(--gold-bright) 0%,var(--gold) 55%,var(--gold-deep) 100%);color:var(--ink-3);box-shadow:0 16px 32px -14px rgba(212,175,55,.6);}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 20px 38px -12px rgba(212,175,55,.75);}
+.btn-gold{background:linear-gradient(135deg,var(--gold-bright) 0%,var(--gold) 55%,var(--gold-deep) 100%);color:var(--ink-3);box-shadow:0 12px 24px -10px rgba(212,175,55,.5);}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 18px 30px -8px rgba(212,175,55,.7);}
+
 .btn-line{border:1.5px solid rgba(255,255,255,.5);color:#fff;background:rgba(255,255,255,.06);backdrop-filter:blur(6px);}
-.btn-line:hover{background:rgba(255,255,255,.16);transform:translateY(-2px);}
-.btn-dark{background:var(--ink);color:#fff;box-shadow:0 14px 30px -14px rgba(15,23,42,.6);}
-.btn-dark:hover{background:var(--ink-2);transform:translateY(-2px);}
-.btn-wa{background:#25D366;color:#fff;box-shadow:0 14px 28px -12px rgba(37,211,102,.55);}
-.btn-wa:hover{background:#1EBE5A;transform:translateY(-2px);}
+.btn-line:hover{background:rgba(255,255,255,.16);border-color:#fff;transform:translateY(-3px);}
 
-/* ---------- Logo mark ---------- */
-.logo-mark{width:42px;height:42px;border-radius:12px;flex-shrink:0;display:block;}
+.btn-wa{background:#25D366;color:#fff;box-shadow:0 12px 24px -10px rgba(37,211,102,.4);}
+.btn-wa:hover{background:#1EBE5A;transform:translateY(-3px);box-shadow:0 18px 30px -8px rgba(37,211,102,.6);}
+
+/* ---------- Logo & Nav ---------- */
+.logo-mark{width:42px;height:42px;border-radius:12px;flex-shrink:0;display:block;transition:transform .4s ease;}
+.logo:hover .logo-mark {transform: rotate(15deg) scale(1.05);}
 .logo{display:flex;align-items:center;gap:11px;}
 .logo-text{line-height:1.1;}
-.logo-text .name{display:block;font-family:'Fraunces',serif;font-weight:560;font-size:1.18rem;transition:color .3s ease;}
-header:not(.solid) .logo-text .name{color:#fff;}
+.logo-text .name{display:block;font-family:'Fraunces',serif;font-weight:560;font-size:1.18rem;color:var(--ink-3);}
 .logo-text .tag{display:block;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);}
-header:not(.solid) .logo-text .tag{color:rgba(255,255,255,.65);}
 
-/* ---------- Nav ---------- */
-header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .35s ease, box-shadow .35s ease, border-color .35s ease;border-bottom:1px solid transparent;}
-header.solid{background:rgba(255,255,255,.85);backdrop-filter:blur(16px) saturate(160%);border-color:rgba(15,23,42,.06);box-shadow:0 10px 30px -18px rgba(15,23,42,.25);}
+header{position:fixed;inset:0 0 auto 0;z-index:50;transition:all .4s ease;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(15,23,42,.06);box-shadow:0 10px 30px -18px rgba(15,23,42,.15);}
 .nav-inner{max-width:1240px;margin:0 auto;padding:0 24px;height:82px;display:flex;align-items:center;justify-content:space-between;}
 @media(min-width:768px){.nav-inner{padding:0 40px;}}
 .nav-links{display:none;align-items:center;gap:36px;font-size:.9rem;font-weight:500;}
 @media(min-width:1080px){.nav-links{display:flex;}}
 .nav-links a{position:relative;padding-bottom:4px;transition:opacity .2s ease;}
-header:not(.solid) .nav-links a{color:rgba(255,255,255,.86);}
 .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--gold);transition:width .3s ease;}
-.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
-.nav-cta{display:none;align-items:center;gap:14px;}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{display:none;align-items:center;gap:24px;}
 @media(min-width:1080px){.nav-cta{display:flex;}}
-.nav-phone{font-weight:600;font-size:.88rem;display:flex;align-items:center;gap:8px;}
-header:not(.solid) .nav-phone{color:rgba(255,255,255,.9);}
-.menu-btn{display:flex;width:42px;height:42px;align-items:center;justify-content:center;border-radius:999px;}
-@media(min-width:1080px){.menu-btn{display:none;}}
-header:not(.solid) .menu-btn i{color:#fff;}
-.mobile-menu{display:none;background:#fff;border-top:1px solid rgba(15,23,42,.06);padding:22px 24px 30px;}
-.mobile-menu.open{display:block;}
-.mobile-menu a{display:block;padding:11px 0;font-weight:500;border-bottom:1px solid rgba(15,23,42,.05);}
-.mobile-menu .actions{display:flex;gap:12px;margin-top:18px;}
-.mobile-menu .actions .btn{flex:1;padding:.85rem 1rem;font-size:.85rem;}
+.nav-phone{font-weight:600;font-size:.88rem;display:flex;align-items:center;gap:8px;transition:color .3s ease;}
+.nav-phone:hover {color: var(--gold-deep);}
 
-/* ---------- Hero (no photo — layered gradient + drawn brush-stroke signature) ---------- */
+/* ---------- Hero ---------- */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:radial-gradient(120% 90% at 82% 8%, #23304d 0%, transparent 55%), radial-gradient(90% 70% at 10% 100%, #241a08 0%, transparent 55%), linear-gradient(160deg,#0B1220 0%, #0F172A 55%, #0A101E 100%);}
-.hero-strokes{position:absolute;inset:0;pointer-events:none;opacity:.9;}
 .hero-inner{position:relative;width:100%;padding:150px 0 110px;}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-pale);margin-bottom:26px;opacity:0;transform:translateY(14px);animation:riseIn .8s .15s cubic-bezier(.22,.9,.28,1) forwards;}
-.eyebrow .dot{width:6px;height:6px;border-radius:999px;background:var(--gold);}
-h1.hero-h{color:#fff;font-weight:560;font-size:clamp(2.6rem,6.2vw,4.9rem);line-height:1.02;max-width:17ch;opacity:0;transform:translateY(22px);animation:riseIn .9s .3s cubic-bezier(.22,.9,.28,1) forwards;}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-pale);margin-bottom:26px;}
+.eyebrow .dot{width:6px;height:6px;border-radius:999px;background:var(--gold);animation: pulse 2s infinite;}
+h1.hero-h{color:#fff;font-weight:560;font-size:clamp(2.6rem,6.2vw,4.9rem);line-height:1.02;max-width:17ch;}
 h1.hero-h em{font-style:italic;color:var(--gold);}
-.hero-sub{margin-top:26px;max-width:36ch;color:rgba(255,255,255,.78);font-size:1.08rem;line-height:1.6;opacity:0;transform:translateY(16px);animation:riseIn .9s .48s cubic-bezier(.22,.9,.28,1) forwards;}
-.hero-cta{margin-top:38px;display:flex;flex-wrap:wrap;gap:16px;opacity:0;transform:translateY(16px);animation:riseIn .9s .62s cubic-bezier(.22,.9,.28,1) forwards;}
-@keyframes riseIn{to{opacity:1;transform:translateY(0);}}
-.hero-stats{position:relative;border-top:1px solid rgba(255,255,255,.14);margin-top:64px;padding-top:32px;display:grid;grid-template-columns:repeat(3,1fr);max-width:560px;gap:20px;opacity:0;transform:translateY(16px);animation:riseIn .9s .78s cubic-bezier(.22,.9,.28,1) forwards;}
-.hero-stats .num{font-family:'Fraunces',serif;color:var(--gold);font-size:clamp(1.7rem,3vw,2.3rem);font-weight:560;font-variant-numeric:tabular-nums;}
+.hero-sub{margin-top:26px;max-width:36ch;color:rgba(255,255,255,.78);font-size:1.08rem;line-height:1.6;}
+.hero-cta{margin-top:38px;display:flex;flex-wrap:wrap;gap:16px;}
+.hero-stats{position:relative;border-top:1px solid rgba(255,255,255,.14);margin-top:64px;padding-top:32px;display:grid;grid-template-columns:repeat(3,1fr);max-width:560px;gap:20px;}
+.hero-stats .num{font-family:'Fraunces',serif;color:var(--gold);font-size:clamp(1.7rem,3vw,2.3rem);font-weight:560;}
 .hero-stats .lbl{margin-top:4px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);}
-.scroll-cue{position:absolute;right:40px;bottom:34px;display:none;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,.55);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;}
-@media(min-width:900px){.scroll-cue{display:flex;}}
-.scroll-cue .line{width:1px;height:38px;background:linear-gradient(180deg,rgba(255,255,255,.7),transparent);animation:cue 1.8s ease-in-out infinite;}
-@keyframes cue{0%{transform:scaleY(.4);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}100%{transform:scaleY(.4);transform-origin:bottom;}}
 
-/* ---------- Section scaffolding ---------- */
-section{position:relative;}
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212,175,55,0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(212,175,55,0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+}
+
+/* ---------- Sections ---------- */
 .eyebrow-sm{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;display:block;}
 .h2{font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:560;letter-spacing:-0.015em;line-height:1.12;}
 .lede{color:var(--slate);font-size:1.05rem;line-height:1.65;margin-top:16px;max-width:44ch;}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.22,.9,.28,1), transform .7s cubic-bezier(.22,.9,.28,1);}
-.reveal.in{opacity:1;transform:translateY(0);}
 
-/* ---------- Trust strip ---------- */
+/* ---------- Trust Strip ---------- */
 .trust{background:var(--stone);padding:46px 0;}
 .trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
-@media(min-width:640px){.trust-grid{grid-template-columns:repeat(4,1fr);}}
-@media(min-width:1080px){.trust-grid{grid-template-columns:repeat(7,1fr);}}
-.trust-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;}
-.trust-item .ic{width:50px;height:50px;border-radius:14px;background:#fff;box-shadow:0 8px 20px -10px rgba(15,23,42,.18);display:flex;align-items:center;justify-content:center;color:var(--gold-deep);font-size:17px;}
+@media(min-width:640px){.trust-grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:1080px){.trust-grid{grid-template-columns:repeat(6,1fr);}}
+.trust-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;transition:transform .3s ease;}
+.trust-item:hover {transform: translateY(-5px);}
+.trust-item .ic{width:50px;height:50px;border-radius:14px;background:#fff;box-shadow:0 8px 20px -10px rgba(15,23,42,.18);display:flex;align-items:center;justify-content:center;color:var(--gold-deep);font-size:17px;transition: all .3s ease;}
+.trust-item:hover .ic {background: var(--ink);color: var(--gold-bright);}
 .trust-item span.label{font-size:12px;font-weight:600;}
 
-/* ---------- Services — paint-swatch card system (signature element) ---------- */
-.svc-grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:56px;}
+/* ---------- Services Swatch Cards ---------- */
+.svc-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-top:56px;}
 @media(min-width:720px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
 @media(min-width:1100px){.svc-grid{grid-template-columns:repeat(3,1fr);}}
-.svc-card{position:relative;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.04), 0 22px 44px -26px rgba(15,23,42,.22);transition:transform .45s cubic-bezier(.22,.9,.28,1), box-shadow .45s ease;}
-.svc-card:hover{transform:translateY(-6px);box-shadow:0 1px 2px rgba(15,23,42,.05), 0 32px 56px -22px rgba(15,23,42,.28);}
+.svc-card{position:relative;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 22px 44px -26px rgba(15,23,42,.15);transition:all .4s cubic-bezier(0.165, 0.84, 0.44, 1);}
+.svc-card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 32px 56px -22px rgba(15,23,42,.25);}
 .svc-media{position:relative;aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.svc-media .brush-arc{position:absolute;inset:0;opacity:.5;}
-.svc-media .ic-badge{position:relative;width:64px;height:64px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;transition:transform .45s cubic-bezier(.22,.9,.28,1);}
-.svc-card:hover .ic-badge{transform:scale(1.1) rotate(-6deg);}
-.swatch-corner{position:absolute;top:0;right:0;width:46px;height:46px;overflow:hidden;pointer-events:none;}
-.swatch-corner::before{content:'';position:absolute;top:-23px;right:-23px;width:46px;height:46px;background:linear-gradient(135deg,var(--gold-bright),var(--gold-deep));transform:rotate(45deg) translateY(0);transition:transform .45s cubic-bezier(.22,.9,.28,1);}
-.svc-card:hover .swatch-corner::before{transform:rotate(45deg) translateY(9px);}
+.svc-media .ic-badge{position:relative;width:64px;height:64px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;transition:transform .5s ease;}
+.svc-card:hover .ic-badge{transform:scale(1.15) rotate(-8deg);}
+.swatch-corner{position:absolute;top:0;right:0;width:46px;height:46px;overflow:hidden;}
+.swatch-corner::before{content:'';position:absolute;top:-23px;right:-23px;width:46px;height:46px;background:linear-gradient(135deg,var(--gold-bright),var(--gold-deep));transform:rotate(45deg);transition:transform .4s ease;}
+.svc-card:hover .swatch-corner::before{transform:rotate(45deg) translateY(6px);}
 .svc-body{padding:22px 24px 26px;}
 .svc-body h3{font-size:1.18rem;font-weight:560;margin:0 0 8px;}
 .svc-body p{font-size:.9rem;color:var(--slate);line-height:1.55;margin:0 0 16px;}
 .svc-link{font-size:.85rem;font-weight:700;display:inline-flex;align-items:center;gap:7px;color:var(--ink);}
 .svc-link i{font-size:11px;transition:transform .25s ease;}
-.svc-card:hover .svc-link i{transform:translateX(4px);}
+.svc-card:hover .svc-link i{transform:translateX(6px);}
 
-/* ---------- Before / After (illustrated finish swatches, fully vector) ---------- */
-.ba{position:relative;width:100%;aspect-ratio:4/3;border-radius:24px;overflow:hidden;box-shadow:0 34px 64px -28px rgba(15,23,42,.4);cursor:ew-resize;touch-action:pan-y;}
-@media(min-width:768px){.ba{aspect-ratio:16/9;}}
-.ba-panel{position:absolute;inset:0;display:flex;align-items:flex-end;padding:22px;}
-.ba-after{background:linear-gradient(135deg,#233150 0%, #0F172A 45%, #241c09 100%);z-index:1;}
-.ba-after::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg, rgba(212,175,55,.16) 0%, transparent 40%), radial-gradient(60% 60% at 80% 20%, rgba(255,255,255,.12), transparent 70%);}
-.ba-before{background:
-  repeating-linear-gradient(115deg, rgba(15,23,42,.06) 0 2px, transparent 2px 14px),
-  linear-gradient(135deg,#DAD5C8 0%, #C7C0AE 55%, #B6AE99 100%);
-  z-index:2;clip-path:inset(0 50% 0 0);}
-.ba-swatch-tag{position:relative;z-index:3;font-size:12.5px;font-weight:700;color:#fff;background:rgba(10,16,30,.55);padding:6px 13px;border-radius:999px;backdrop-filter:blur(6px);}
-.ba-before .ba-swatch-tag{color:var(--ink);background:rgba(255,255,255,.6);}
-.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:0;z-index:4;transform:translateX(-50%);}
-.ba-handle::before{content:'';position:absolute;top:0;bottom:0;left:0;width:2.5px;background:#fff;box-shadow:0 0 0 1px rgba(15,23,42,.12),0 6px 20px rgba(15,23,42,.3);transform:translateX(-50%);}
-.ba-grip{position:absolute;top:50%;left:0;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 28px -10px rgba(15,23,42,.45);color:var(--ink);}
-.ba-tag{position:absolute;top:16px;z-index:5;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:999px;background:rgba(10,16,30,.6);color:#fff;backdrop-filter:blur(6px);}
+.g-3{background:linear-gradient(135deg,#2A3654 0%,#141C2E 100%);}
+.g-4{background:linear-gradient(135deg,#3A2F17 0%,#0F172A 65%);}
+.g-5{background:linear-gradient(135deg,#0F172A 0%,#2E2410 100%);}
+.g-2{background:linear-gradient(135deg,#D4AF37 0%,#A9821F 100%);}
 
-/* ---------- Gallery — swatch/portfolio index cards ---------- */
-.filters{display:flex;flex-wrap:wrap;gap:10px;margin:44px 0 34px;}
-.filter-btn{padding:10px 20px;border-radius:999px;font-size:.85rem;font-weight:600;background:var(--stone);color:var(--ink);transition:background .25s ease,color .25s ease;}
-.filter-btn.active,.filter-btn:hover{background:var(--ink);color:#fff;}
-.g-grid{display:grid;grid-template-columns:1fr;gap:20px;}
-@media(min-width:700px){.g-grid{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:1100px){.g-grid{grid-template-columns:repeat(3,1fr);}}
-.g-item{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:space-between;padding:20px;transition:transform .4s cubic-bezier(.22,.9,.28,1);}
-.g-item:hover{transform:translateY(-5px);}
-.g-item .g-icon{width:42px;height:42px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;}
-.g-item .g-cat{align-self:flex-start;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);background:rgba(255,255,255,.12);padding:5px 11px;border-radius:999px;}
-.g-item .g-name{color:#fff;font-weight:600;font-size:1rem;}
-.g-item .g-loc{color:rgba(255,255,255,.65);font-size:.78rem;margin-top:2px;}
-
-/* ---------- About / Process / Why us ---------- */
+/* ---------- About & Process Timeline ---------- */
 .about{background:var(--ink-3);color:#fff;padding:120px 0;}
-.process-list{position:relative;margin-top:40px;}
+.process-list{position:relative;margin-top:50px;}
 .p-row{display:grid;grid-template-columns:52px 1fr;gap:22px;padding-bottom:38px;position:relative;}
 .p-row:last-child{padding-bottom:0;}
-.p-num{width:52px;height:52px;border-radius:999px;background:var(--gold);color:var(--ink-3);font-family:'Fraunces',serif;font-weight:650;font-size:1.1rem;display:flex;align-items:center;justify-content:center;position:relative;z-index:2;}
-.p-line{position:absolute;left:26px;top:52px;bottom:0;width:1px;background:repeating-linear-gradient(to bottom,rgba(212,175,55,.55) 0 7px,transparent 7px 14px);}
+.p-num{width:52px;height:52px;border-radius:999px;background:var(--gold);color:var(--ink-3);font-family:'Fraunces',serif;font-weight:650;font-size:1.1rem;display:flex;align-items:center;justify-content:center;position:relative;z-index:2;transition: transform 0.3s ease;}
+.p-row:hover .p-num {transform: scale(1.1) rotate(10deg);}
+.p-line{position:absolute;left:26px;top:52px;bottom:0;width:1px;background:repeating-linear-gradient(to bottom,rgba(212,175,55,.35) 0 7px,transparent 7px 14px);}
 .p-row:last-child .p-line{display:none;}
 .p-row h4{font-size:1.12rem;font-weight:600;margin:6px 0 6px;color:#fff;}
 .p-row p{color:rgba(255,255,255,.6);font-size:.92rem;line-height:1.55;margin:0;max-width:44ch;}
-.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:44px;}
-@media(min-width:720px){.why-grid{grid-template-columns:repeat(4,1fr);}}
-.why-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px 20px;}
-.why-item i{color:var(--gold);font-size:19px;margin-bottom:14px;display:block;}
-.why-item span{font-size:.88rem;font-weight: 500;}
 
-/* ---------- Contact / CTA Section ---------- */
+/* ---------- Contact Card ---------- */
 .contact{padding:100px 0;background:var(--stone);text-align:center;}
-.contact-card{background:var(--ink);color:#fff;padding:60px 40px;border-radius:32px;box-shadow:0 30px 60px -20px rgba(15,23,42,0.3);max-width:800px;margin:0 auto;}
+.contact-card{background:var(--ink);color:#fff;padding:60px 40px;border-radius:32px;box-shadow:0 30px 60px -20px rgba(15,23,42,0.3);max-width:800px;margin:0 auto;position:relative;overflow:hidden;}
+.contact-card::before {content: '';position: absolute;top: -50%;left: -50%;width: 200%;height: 200%;background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 60%);pointer-events: none;}
 .contact h2{color:#fff;margin-bottom:16px;}
 .contact p{color:rgba(255,255,255,0.7);margin-bottom:32px;font-size:1.1rem;}
 .contact-buttons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
 
 /* ---------- Footer ---------- */
-footer{background:var(--ink-3);color:rgba(255,255,255,0.5);padding:40px 0;text-align:center;font-size:0.9rem;border-top:1px solid rgba(255,255,255,0.05);}
+footer{background:var(--ink-3);color:rgba(255,255,255,0.4);padding:40px 0;text-align:center;font-size:0.9rem;border-top:1px solid rgba(255,255,255,0.05);}
 footer p{margin:0;}
 </style>
 </head>
 <body>
 
 <!-- Header / Navigation -->
-<header class="solid">
+<header>
   <div class="nav-inner">
     <div class="logo">
       <div class="logo-mark g-2"></div>
@@ -252,7 +192,7 @@ footer p{margin:0;}
       </div>
     </div>
     <div class="nav-links">
-      <a href="#services" class="active">Services</a>
+      <a href="#services">Services</a>
       <a href="#about">About Process</a>
       <a href="#contact">Contact</a>
     </div>
@@ -267,14 +207,15 @@ footer p{margin:0;}
 <section class="hero">
   <div class="wrap hero-inner">
     <div class="eyebrow"><span class="dot"></span>Premium Painting Services</div>
-    <h1 class="hero-h">Professional House Painting Services in <em>Kuala Lumpur</em></h1>
-    <p class="hero-sub">Premium, licensed painting for homes, apartments, condos and commercial spaces across Klang Valley. Free inspection and warranty included.</p>
-    <div class="hero-cta">
+    <h1 class="hero-h" data-aos="fade-up" data-aos-duration="1000">Professional House Painting Services in <em>Kuala Lumpur</em></h1>
+    <p class="hero-sub" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">Premium, licensed painting for homes, apartments, condos and commercial spaces across Klang Valley. Free inspection and warranty included.</p>
+    
+    <div class="hero-cta" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
       <a href="https://wa.me/60182430482" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Quote</a>
       <a href="#services" class="btn btn-line">Our Services</a>
     </div>
     
-    <div class="hero-stats">
+    <div class="hero-stats" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
       <div>
         <div class="num">100%</div>
         <div class="lbl">Satisfaction</div>
@@ -294,14 +235,14 @@ footer p{margin:0;}
 <!-- Trust / Areas Covered Strip -->
 <section class="trust">
   <div class="wrap">
-    <span class="eyebrow-sm" style="text-align:center; display:block;">Areas We Cover Across Klang Valley</span>
+    <span class="eyebrow-sm" style="text-align:center; display:block;" data-aos="fade-down">Areas We Cover Across Klang Valley</span>
     <div class="trust-grid">
-      <div class="trust-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Kuala Lumpur</span></div>
-      <div class="trust-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Puchong</span></div>
-      <div class="trust-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Shah Alam</span></div>
-      <div class="trust-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Subang Jaya</span></div>
-      <div class="trust-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Petaling Jaya</span></div>
-      <div class="trust-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Klang</span></div>
+      <div class="trust-item" data-aos="fade-up" data-aos-delay="50"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Kuala Lumpur</span></div>
+      <div class="trust-item" data-aos="fade-up" data-aos-delay="100"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Puchong</span></div>
+      <div class="trust-item" data-aos="fade-up" data-aos-delay="150"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Shah Alam</span></div>
+      <div class="trust-item" data-aos="fade-up" data-aos-delay="200"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Subang Jaya</span></div>
+      <div class="trust-item" data-aos="fade-up" data-aos-delay="250"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Petaling Jaya</span></div>
+      <div class="trust-item" data-aos="fade-up" data-aos-delay="300"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Klang</span></div>
     </div>
   </div>
 </section>
@@ -309,13 +250,13 @@ footer p{margin:0;}
 <!-- Services Section -->
 <section id="services" style="padding: 100px 0;">
   <div class="wrap">
-    <span class="eyebrow-sm">What We Do</span>
-    <h2 class="h2">Our Expert Painting Services</h2>
-    <p class="lede">We bring life to your spaces with top-quality materials and professional workmanship.</p>
+    <span class="eyebrow-sm" data-aos="fade-right">What We Do</span>
+    <h2 class="h2" data-aos="fade-right" data-aos-delay="100">Our Expert Painting Services</h2>
+    <p class="lede" data-aos="fade-right" data-aos-delay="200">We bring life to your spaces with top-quality materials and professional workmanship.</p>
     
     <div class="svc-grid">
       <!-- Card 1 -->
-      <div class="svc-card">
+      <div class="svc-card" data-aos="fade-up" data-aos-delay="100">
         <div class="svc-media g-3">
           <div class="ic-badge"><i class="fa-solid fa-house"></i></div>
         </div>
@@ -327,7 +268,7 @@ footer p{margin:0;}
         </div>
       </div>
       <!-- Card 2 -->
-      <div class="svc-card">
+      <div class="svc-card" data-aos="fade-up" data-aos-delay="200">
         <div class="svc-media g-4">
           <div class="ic-badge"><i class="fa-solid fa-paint-roller"></i></div>
         </div>
@@ -339,7 +280,7 @@ footer p{margin:0;}
         </div>
       </div>
       <!-- Card 3 -->
-      <div class="svc-card">
+      <div class="svc-card" data-aos="fade-up" data-aos-delay="300">
         <div class="svc-media g-5">
           <div class="ic-badge"><i class="fa-solid fa-building"></i></div>
         </div>
@@ -357,59 +298,14 @@ footer p{margin:0;}
 <!-- Process Section -->
 <section id="about" class="about">
   <div class="wrap">
-    <span class="eyebrow-sm" style="color:var(--gold-bright);">Work Process</span>
-    <h2 class="h2" style="color:#fff;">How We Work</h2>
-    <p class="lede" style="color:rgba(255,255,255,0.6);">Simple, clear, and professional steps from start to finish.</p>
+    <span class="eyebrow-sm" style="color:var(--gold-bright);" data-aos="fade-left">Work Process</span>
+    <h2 class="h2" style="color:#fff;" data-aos="fade-left" data-aos-delay="100">How We Work</h2>
+    <p class="lede" style="color:rgba(255,255,255,0.6);" data-aos="fade-left" data-aos-delay="200">Simple, clear, and professional steps from start to finish.</p>
     
     <div class="process-list">
-      <div class="p-row">
+      <div class="p-row" data-aos="fade-left" data-aos-delay="100">
         <div class="p-num">1</div>
         <div class="p-line"></div>
         <div>
           <h4>Free Inspection &amp; Quote</h4>
-          <p>We visit your site, measure the area, inspect wall conditions, and provide a transparent, detailed written quotation.</p>
-        </div>
-      </div>
-      <div class="p-row">
-        <div class="p-num">2</div>
-        <div class="p-line"></div>
-        <div>
-          <h4>Surface Preparation</h4>
-          <p>We fix cracks, cover cracks, clean the surface, and put protective plastic sheets on your furniture and floors.</p>
-        </div>
-      </div>
-      <div class="p-row">
-        <div class="p-num">3</div>
-        <div>
-          <h4>Premium Undercoat &amp; Painting</h4>
-          <p>We apply high-quality primer sealer followed by premium top coats for long-lasting, vibrant colors.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Contact / CTA Section -->
-<section id="contact" class="contact">
-  <div class="wrap">
-    <div class="contact-card">
-      <h2>Ready to Freshly Paint Your Property?</h2>
-      <p>Get in touch today for a free on-site inspection and instant price quotation with no hidden charges.</p>
-      <div class="contact-buttons">
-        <a href="https://wa.me/60182430482" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
-        <a href="tel:+60182430482" class="btn btn-gold"><i class="fa-solid fa-phone"></i> Call +60182430482</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="wrap">
-    <p>&copy; 2026 Naveed Paint. All Rights Reserved. Professional House Painting Services in Malaysia.</p>
-  </div>
-</footer>
-
-</body>
-</html>
-
+          <p>We visit your site, measure the area, inspect wall condition
