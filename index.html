@@ -23,6 +23,7 @@
   --paper: #FFFFFF;
   --stone: #F8F6F0;
   --slate: #64748B;
+  --border: rgba(15, 23, 42, 0.08);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +35,7 @@ a { color: inherit; text-decoration: none; }
 .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
 
 /* Global Buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; font-size: 0.95rem; padding: 12px 28px; border-radius: 50px; transition: all 0.3s ease; cursor: pointer; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; font-size: 0.95rem; padding: 12px 28px; border-radius: 50px; transition: all 0.3s ease; cursor: pointer; border: none; }
 .btn-gold { background: linear-gradient(135deg, #E8CB6E 0%, var(--gold) 50%, var(--gold-dark) 100%); color: #000; box-shadow: 0 10px 20px -8px rgba(212,175,55,0.4); }
 .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 15px 25px -6px rgba(212,175,55,0.6); }
 .btn-wa { background: #25D366; color: white; box-shadow: 0 10px 20px -8px rgba(37,211,102,0.4); }
@@ -50,7 +51,7 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255,
 
 /* Hero Section */
 .hero { background: linear-gradient(145deg, #090D16 0%, #151F32 100%); color: white; padding: 60px 0 70px 0; overflow: hidden; }
-.hero-inner { display: flex; flex-direction: column; gap: 30px; }
+.hero-inner { display: flex; flex-direction: column; gap: 24px; }
 .eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
 .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: #25D366; box-shadow: 0 0 8px #25D366; }
 .hero h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 600; line-height: 1.1; max-width: 20ch; }
@@ -97,6 +98,27 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255,
 .side-label { position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.75); color: white; padding: 4px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); }
 .side-label.after { background: rgba(212,175,55,0.95); color: black; left: auto; right: 10px; }
 
+/* Interactive Quote Form Section */
+.quote-section { padding: 80px 0; background: white; }
+.quote-container { background: var(--stone); border-radius: 24px; padding: 35px 20px; max-width: 650px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+.quote-form h3 { font-size: 1.5rem; margin-bottom: 20px; text-align: center; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--ink-light); }
+.form-group select, .form-group input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.12); font-family: inherit; font-size: 0.95rem; background: white; outline: none; }
+.form-group select:focus, .form-group input:focus { border-color: var(--gold); }
+
+/* Reviews/Testimonials Section */
+.reviews-section { padding: 80px 0; background: var(--stone); text-align: center; }
+.review-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 35px; }
+@media (min-width: 768px) { .review-grid { grid-template-columns: repeat(3, 1fr); } }
+.review-card { background: white; padding: 30px 24px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.03); text-align: left; border: 1px solid rgba(0,0,0,0.02); }
+.stars { color: #F59E0B; font-size: 0.9rem; margin-bottom: 12px; }
+.review-text { font-size: 0.9rem; color: var(--ink-light); font-style: italic; line-height: 1.6; margin-bottom: 16px; min-height: 80px; }
+.client-info { display: flex; align-items: center; gap: 12px; }
+.client-avatar { width: 42px; height: 42px; border-radius: 50%; background: #E2E8F0; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--slate); font-size: 0.9rem; }
+.client-details h5 { font-size: 0.95rem; font-weight: 600; }
+.client-details span { font-size: 0.75rem; color: var(--slate); }
+
 /* Process Section */
 .process { padding: 80px 0; }
 .proc-list { display: flex; flex-direction: column; gap: 24px; margin-top: 35px; }
@@ -106,14 +128,24 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255,
 .proc-text p { color: var(--slate); font-size: 0.9rem; }
 
 /* Contact CTA Block */
-.cta-block { padding: 60px 0 80px 0; text-align: center; }
+.cta-block { padding: 40px 0 80px 0; text-align: center; }
 .cta-box { background: linear-gradient(135deg, var(--ink) 0%, #1E293B 100%); color: white; padding: 45px 25px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); max-width: 850px; margin: 0 auto; }
 .cta-box h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 500; margin-bottom: 12px; }
 .cta-box p { color: #94A3B8; font-size: 1rem; max-width: 50ch; margin: 0 auto 30px auto; }
 .cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 
-/* Footer */
-footer { background: #090D16; color: #64748B; padding: 25px 0; text-align: center; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); }
+/* Complete Modern Footer */
+footer { background: #0F172A; color: #94A3B8; padding: 60px 0 30px 0; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.9rem; }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 35px; margin-bottom: 40px; }
+@media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } }
+.footer-col h4 { color: white; font-size: 1.1rem; margin-bottom: 18px; font-weight: 600; font-family: 'Inter', sans-serif; }
+.footer-col p { font-size: 0.88rem; line-height: 1.6; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a:hover { color: var(--gold); }
+.footer-info li { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 0.88rem; }
+.footer-info i { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 25px; text-align: center; font-size: 0.8rem; color: #64748B; }
 
 /* Floating Sticky WhatsApp */
 .floating-wa { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 6px 20px rgba(37,211,102,0.4); z-index: 999; animation: wa-bounce 3s infinite ease-in-out; }
@@ -197,10 +229,10 @@ footer { background: #090D16; color: #64748B; padding: 25px 0; text-align: cente
         </div>
       </div>
       <div class="svc-card">
-        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80" alt="Exterior Painting" class="svc-img">
+        <img src="https://images.unsplash.com/photo-1527244485584-59c4043fb931?auto=format&fit=crop&w=600&q=80" alt="Exterior Painting" class="svc-img">
         <div class="svc-content">
           <h3>Exterior Painting</h3>
-          <p>Weather-shield protection mapping to protect outside structures against sun and rain damage.</p>
+          <p>Weather-shield premium protection mapping to protect outside wall structures against sun and rain damage.</p>
         </div>
       </div>
       <div class="svc-card">
@@ -222,32 +254,32 @@ footer { background: #090D16; color: #64748B; padding: 25px 0; text-align: cente
     <p class="sec-desc">See the incredible transformation and premium quality finish of our completed projects.</p>
     
     <div class="gallery-grid">
-      <!-- Project 1 -->
+      <!-- Project 1 (Living Room Match) -->
       <div class="gallery-card">
-        <div class="gallery-title">Living Room Wall Renovation</div>
+        <div class="gallery-title">Living Room Interior Painting</div>
         <div class="split-img-container">
           <div class="img-side">
-            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="Before Interior">
-            <span class="side-label">Before</span>
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="Before Interior Wall">
+            <span class="side-label">Before (Old Wall)</span>
           </div>
           <div class="img-side">
-            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500&q=80" alt="After Interior">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500&q=80" alt="After Interior Wall Finish">
             <span class="side-label after">After Finish</span>
           </div>
         </div>
       </div>
       
-      <!-- Project 2 -->
+      <!-- Project 2 (Exterior Match) -->
       <div class="gallery-card">
-        <div class="gallery-title">Exterior House Wall Finish</div>
+        <div class="gallery-title">Full Exterior House Coating</div>
         <div class="split-img-container">
           <div class="img-side">
-            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=500&q=80" alt="Before Exterior">
-            <span class="side-label">Before</span>
+            <img src="https://images.unsplash.com/photo-1504297050568-910d24c426d3?auto=format&fit=crop&w=500&q=80" alt="Before Exterior Painting">
+            <span class="side-label">Before (Dull)</span>
           </div>
           <div class="img-side">
-            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=500&q=80" alt="After Exterior">
-            <span class="side-label after">After Finish</span>
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=500&q=80" alt="After Exterior Painting Finish">
+            <span class="side-label after">After Premium Coat</span>
           </div>
         </div>
       </div>
@@ -255,64 +287,47 @@ footer { background: #090D16; color: #64748B; padding: 25px 0; text-align: cente
   </div>
 </section>
 
-<!-- Process Section -->
-<section class="process">
+<!-- Interactive Quote Calculator Section -->
+<section id="quote" class="quote-section">
   <div class="wrap">
-    <span class="section-tag" style="margin-bottom:8px;">Work Process</span>
-    <h2 class="sec-title">3 Simple Steps to Paint Your Space</h2>
+    <span class="section-tag" style="margin-bottom:8px; text-align:center;">Instant Quotation</span>
+    <h2 class="sec-title" style="text-align:center;">Get Free Pricing Estimate</h2>
+    <p class="sec-desc" style="text-align:center; margin: 0 auto 35px auto;">Select your property type details below to calculate a quick ballpark cost recommendation.</p>
     
-    <div class="proc-list">
-      <div class="proc-item">
-        <div class="proc-num">1</div>
-        <div class="proc-text">
-          <h4>Free Site Inspection</h4>
-          <p>We visit your site, carefully examine the wall surface, and share a 100% transparent cost estimation.</p>
+    <div class="quote-container">
+      <form class="quote-form" onsubmit="event.preventDefault();">
+        <div class="form-group">
+          <label for="prop-type">Property Type</label>
+          <select id="prop-type">
+            <option value="Condo / Apartment">Condo / Apartment</option>
+            <option value="1-Storey Terrace House">1-Storey Terrace House</option>
+            <option value="2-Storey Terrace House">2-Storey Terrace House</option>
+            <option value="Semi-D / Bungalow">Semi-D / Bungalow</option>
+          </select>
         </div>
-      </div>
-      <div class="proc-item">
-        <div class="proc-num">2</div>
-        <div class="proc-text">
-          <h4>Surface Preparation</h4>
-          <p>We cover all floors/furniture with protection sheets, fix structural cracks, and apply primer coat sealer.</p>
+        <div class="form-group">
+          <label for="paint-scope">Painting Scope</label>
+          <select id="paint-scope">
+            <option value="Interior Walls Only">Interior Walls Only</option>
+            <option value="Exterior Walls Only">Exterior Walls Only</option>
+            <option value="Full House (Interior &amp; Exterior)">Full House (Interior &amp; Exterior)</option>
+          </select>
         </div>
-      </div>
-      <div class="proc-item">
-        <div class="proc-num">3</div>
-        <div class="proc-text">
-          <h4>Premium Painting Finish</h4>
-          <p>We layer high-end final top coats carefully for long-lasting, smooth colors, leaving the area clean.</p>
+        <div class="form-group">
+          <label for="phone-num">Your Phone Number</label>
+          <input type="text" id="phone-num" placeholder="e.g. 0182430482" required>
         </div>
-      </div>
+        
+        <button type="button" class="btn btn-gold" style="width:100%; margin-top:10px; font-size:1rem;" onclick="window.location.href='https://wa.me/60182430482?text=Hi%20Naveed%20Paint,%20I%20want%20a%20painting%20quote%20for%20my%20' + document.getElementById('prop-type').value + '%20(' + document.getElementById('paint-scope').value + ').%20Contact:%20' + document.getElementById('phone-num').value;">
+          <i class="fa-brands fa-whatsapp"></i> Send Quote Request to WhatsApp
+        </button>
+      </form>
     </div>
   </div>
 </section>
 
-<!-- Contact Block -->
-<section class="cta-block">
+<!-- Customer Reviews Section -->
+<section class="reviews-section">
   <div class="wrap">
-    <div class="cta-box">
-      <h2>Ready to Freshly Paint Your Property?</h2>
-      <p>Schedule a quick site visit with us today. Get a fast response on pricing estimate and start date over WhatsApp.</p>
-      <div class="cta-buttons">
-        <a href="https://wa.me/60182430482" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
-        <a href="tel:+60182430482" class="btn btn-gold"><i class="fa-solid fa-phone"></i> Call Now</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="wrap">
-    <p>&copy; 2026 Naveed Paint. All Rights Reserved. Professional House Painting Services in Malaysia.</p>
-  </div>
-</footer>
-
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/60182430482" class="floating-wa" target="_blank">
-  <i class="fa-brands fa-whatsapp"></i>
-</a>
-
-</body>
-          </html>
-          
+    <span class="section-tag" style="margin-bottom:8px;">Testimonials</span>
+    <h2 class="sec-title">What Our Clients Sa
