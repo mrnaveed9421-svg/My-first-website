@@ -225,4 +225,191 @@ section{position:relative;}
 @media(min-width:720px){.why-grid{grid-template-columns:repeat(4,1fr);}}
 .why-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px 20px;}
 .why-item i{color:var(--gold);font-size:19px;margin-bottom:14px;display:block;}
-.why-item span{font-size:.88rem;font-weig
+.why-item span{font-size:.88rem;font-weight: 500;}
+
+/* ---------- Contact / CTA Section ---------- */
+.contact{padding:100px 0;background:var(--stone);text-align:center;}
+.contact-card{background:var(--ink);color:#fff;padding:60px 40px;border-radius:32px;box-shadow:0 30px 60px -20px rgba(15,23,42,0.3);max-width:800px;margin:0 auto;}
+.contact h2{color:#fff;margin-bottom:16px;}
+.contact p{color:rgba(255,255,255,0.7);margin-bottom:32px;font-size:1.1rem;}
+.contact-buttons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink-3);color:rgba(255,255,255,0.5);padding:40px 0;text-align:center;font-size:0.9rem;border-top:1px solid rgba(255,255,255,0.05);}
+footer p{margin:0;}
+</style>
+</head>
+<body>
+
+<!-- Header / Navigation -->
+<header class="solid">
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-mark g-2"></div>
+      <div class="logo-text">
+        <span class="name">Naveed Paint</span>
+        <span class="tag">Professional Painting</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#services" class="active">Services</a>
+      <a href="#about">About Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <span class="nav-phone"><i class="fa-solid fa-phone"></i> +60182430482</span>
+      <a href="https://wa.me/60182430482" class="btn btn-wa" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow"><span class="dot"></span>Premium Painting Services</div>
+    <h1 class="hero-h">Professional House Painting Services in <em>Kuala Lumpur</em></h1>
+    <p class="hero-sub">Premium, licensed painting for homes, apartments, condos and commercial spaces across Klang Valley. Free inspection and warranty included.</p>
+    <div class="hero-cta">
+      <a href="https://wa.me/60182430482" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Quote</a>
+      <a href="#services" class="btn btn-line">Our Services</a>
+    </div>
+    
+    <div class="hero-stats">
+      <div>
+        <div class="num">100%</div>
+        <div class="lbl">Satisfaction</div>
+      </div>
+      <div>
+        <div class="num">Free</div>
+        <div class="lbl">Inspection</div>
+      </div>
+      <div>
+        <div class="num">Yes</div>
+        <div class="lbl">Warranty Included</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust / Areas Covered Strip -->
+<section class="trust">
+  <div class="wrap">
+    <span class="eyebrow-sm" style="text-align:center; display:block;">Areas We Cover Across Klang Valley</span>
+    <div class="trust-grid">
+      <div class="trust-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Kuala Lumpur</span></div>
+      <div class="trust-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Puchong</span></div>
+      <div class="trust-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Shah Alam</span></div>
+      <div class="trust-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Subang Jaya</span></div>
+      <div class="trust-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Petaling Jaya</span></div>
+      <div class="trust-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><span class="label">Klang</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" style="padding: 100px 0;">
+  <div class="wrap">
+    <span class="eyebrow-sm">What We Do</span>
+    <h2 class="h2">Our Expert Painting Services</h2>
+    <p class="lede">We bring life to your spaces with top-quality materials and professional workmanship.</p>
+    
+    <div class="svc-grid">
+      <!-- Card 1 -->
+      <div class="svc-card">
+        <div class="svc-media g-3">
+          <div class="ic-badge"><i class="fa-solid fa-house"></i></div>
+        </div>
+        <div class="swatch-corner"></div>
+        <div class="svc-body">
+          <h3>Interior Painting</h3>
+          <p>Complete wall, ceiling, and trim painting for houses, condos, and apartments with neat and clean execution.</p>
+          <a href="https://wa.me/60182430482" class="svc-link">Book Now <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="svc-card">
+        <div class="svc-media g-4">
+          <div class="ic-badge"><i class="fa-solid fa-paint-roller"></i></div>
+        </div>
+        <div class="swatch-corner"></div>
+        <div class="svc-body">
+          <h3>Exterior Painting</h3>
+          <p>Weatherproof protection and premium exterior coating to protect your home from harsh sun and heavy rain.</p>
+          <a href="https://wa.me/60182430482" class="svc-link">Book Now <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="svc-card">
+        <div class="svc-media g-5">
+          <div class="ic-badge"><i class="fa-solid fa-building"></i></div>
+        </div>
+        <div class="swatch-corner"></div>
+        <div class="svc-body">
+          <h3>Commercial Painting</h3>
+          <p>Professional painting setup for offices, shops, and commercial spaces with minimal disruption to your work.</p>
+          <a href="https://wa.me/60182430482" class="svc-link">Book Now <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section id="about" class="about">
+  <div class="wrap">
+    <span class="eyebrow-sm" style="color:var(--gold-bright);">Work Process</span>
+    <h2 class="h2" style="color:#fff;">How We Work</h2>
+    <p class="lede" style="color:rgba(255,255,255,0.6);">Simple, clear, and professional steps from start to finish.</p>
+    
+    <div class="process-list">
+      <div class="p-row">
+        <div class="p-num">1</div>
+        <div class="p-line"></div>
+        <div>
+          <h4>Free Inspection &amp; Quote</h4>
+          <p>We visit your site, measure the area, inspect wall conditions, and provide a transparent, detailed written quotation.</p>
+        </div>
+      </div>
+      <div class="p-row">
+        <div class="p-num">2</div>
+        <div class="p-line"></div>
+        <div>
+          <h4>Surface Preparation</h4>
+          <p>We fix cracks, cover cracks, clean the surface, and put protective plastic sheets on your furniture and floors.</p>
+        </div>
+      </div>
+      <div class="p-row">
+        <div class="p-num">3</div>
+        <div>
+          <h4>Premium Undercoat &amp; Painting</h4>
+          <p>We apply high-quality primer sealer followed by premium top coats for long-lasting, vibrant colors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact / CTA Section -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="contact-card">
+      <h2>Ready to Freshly Paint Your Property?</h2>
+      <p>Get in touch today for a free on-site inspection and instant price quotation with no hidden charges.</p>
+      <div class="contact-buttons">
+        <a href="https://wa.me/60182430482" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+        <a href="tel:+60182430482" class="btn btn-gold"><i class="fa-solid fa-phone"></i> Call +60182430482</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Naveed Paint. All Rights Reserved. Professional House Painting Services in Malaysia.</p>
+  </div>
+</footer>
+
+</body>
+</html>
+
